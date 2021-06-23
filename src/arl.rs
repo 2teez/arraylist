@@ -181,7 +181,7 @@ impl<T: std::fmt::Debug + Clone + PartialEq> ArrayList<T> {
     }
 
     pub fn copy(&self) -> &Self {
-        &self
+        self
     }
 
     pub fn add(&mut self, value: T) -> &mut Self {
