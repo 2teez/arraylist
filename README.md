@@ -2,7 +2,7 @@
 
 ## Name
 
-`arraylist` -- A intutive rust vector wrapper built on top of rust vector implementation. Taste like Java Arraylist, and can be used like Python list functons and JavaScript array.
+`arraylist` -- An intutive rust vector wrapper built on top of rust vector implementation. Taste like Java Arraylist, and can be used like Python list functons and JavaScript array.
 
 ## Installation
 
