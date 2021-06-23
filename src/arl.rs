@@ -203,8 +203,8 @@ impl<T: std::fmt::Debug + Clone + PartialEq> ArrayList<T> {
         }
     }
 
-    pub fn contains(&self, value: &T) -> bool {
-        self.vec.borrow().contains(value)
+    pub fn contains(&self, value: T) -> bool {
+        self.vec.borrow().contains(&value)
     }
 
     pub fn cap(&self) -> usize {
@@ -284,10 +284,10 @@ impl<T: std::fmt::Debug + Clone + PartialEq> ArrayList<T> {
         Some(sub_list)
     }
 
-    pub fn index_of(&self, value: &T) -> Option<usize> {
-        if self.contains(value) {
+    pub fn index_of(&self, value: T) -> Option<usize> {
+        if self.contains(value.clone()) {
             for (ind, val) in self.vec.borrow().iter().enumerate() {
-                if val == value {
+                if *val == value {
                     return Some(ind);
                 }
             }
