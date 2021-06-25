@@ -45,7 +45,7 @@ vec.push(6); // cannot borrow as mutable
 ```
 With arraylist, it works:
 ```
-let arr = arraylist![1,2,3,4];
+let arr = arraylist![1, 2, 3, 4];
 arr.push(5);
 arr.push(6);
 
