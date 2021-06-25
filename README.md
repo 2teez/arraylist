@@ -43,13 +43,13 @@ The code below is not possible just using vec in rust like so:
 let vec = vec![1, 2, 3, 4, 5];
 vec.push(6); // cannot borrow as mutable
 ```
-With arraylist, it works like so:
+With arraylist, it works:
 ```
-let arr = arraylist![1,2,3,4s];
+let arr = arraylist![1,2,3,4];
 arr.push(5);
 arr.push(6);
 
 // print out your arraylist like so:
-arr.print(); // [1,2,3,4,5,6]
+arr.print(); // [1, 2, 3, 4, 5, 6]
 ```
 And yet your `arr` is still immutable.
