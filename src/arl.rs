@@ -146,20 +146,18 @@ impl<T: std::fmt::Debug + Clone + PartialEq> ArrayList<T> {
         self.count.set(self.update_count());
     }
 
-    pub fn add_all_at_index(&self, idx: usize, collection: &[T]) {
-        match idx {
-            0 => self.add_all_at_start(collection),
-            _ => {
-                if idx >= self.len() {
-                    self.add_all(collection);
-                }
-                let mut counter = idx;
+   pub fn add_all_at_index(&self, idx: usize, collection: &[T]) {
+        if idx == 0 {
+            self.add_all_at_start(collection);
+        } else if idx <= self.len() {
+            let mut counter = idx;
 
-                for val in collection.iter() {
-                    self.insert(counter, val.clone());
-                    counter += 1;
-                }
+            for val in collection.iter() {
+                self.insert(counter, val.clone());
+                counter += 1;
             }
+        } else {
+            panic!("Invalid Index {} > {}", idx, self.len());
         }
         self.count.set(self.update_count());
     }
