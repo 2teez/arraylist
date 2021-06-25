@@ -7,7 +7,7 @@
 
 ## Installation
 
-> In the Cargo.toml file
+In the Cargo.toml file
 
     [dependancies]
     arraylist = {git = "https://github.com/2teez/arraylist"}
@@ -17,7 +17,7 @@
     [dependancies]
     arraylist = "0.1.0"
 
-> In the main.rs file
+In the main.rs file
 
 ### To Use
 
@@ -101,8 +101,25 @@ let al = arraylist![].add("bruno").add("b").add("🦀")
  
  Below are the list of the available methods in the crate `ArrayList`:
  1. add
-     Co
+ > pub fn add(&mut self) -> &ArrayList<T>
+ > - Pushes a value into a mutable instance of either an empty or non-empty arraylist ArrayList<T>. The length of the list is increased by 1.
+ 
+        
+        let al = ArrayList::new()
+                    .add("Lagos")
+                    .add("Abuja")
+                    .finish();
+    
+    
  2. add_all
+ > pub fn add_all(&self, collection: &[T]) 
+ > - Takes a slice refrence, and append each of it's elements to the end of the list. Using the extend function of the underlaying `vec`. The length of the list increased by the number of the elements in the slice. The capacity of the list is also adjusted accordingly.
+ 
+    
+    let al = arraylist![1, 2];
+        al.add_all(&[3, 4, 5]);
+        al.print(); // [1, 2, 3, 4, 5]
+    
  3. add_all_at_index
  4. cap
  5. clear
