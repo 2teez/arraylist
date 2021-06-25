@@ -3,7 +3,7 @@
 
 ## Name
 
-`arraylist` -- An intutive rust vector wrapper built on top of rust vector implementation. Taste like Java Arraylist, and can be used like Python list functons and JavaScript array.
+`arraylist` -- An intutive rust vector wrapper built on top of rust [vector implementation](https://doc.rust-lang.org/std/vec/struct.Vec.html). Taste like Java Arraylist, and can be used like Python list functons and JavaScript array.
 
 ## Installation
 
@@ -101,6 +101,7 @@ let al = arraylist![].add("bruno").add("b").add("🦀")
  
  Below are the list of the available methods in the crate `ArrayList`:
  1. add
+     Co
  2. add_all
  3. add_all_at_index
  4. cap
