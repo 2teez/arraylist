@@ -206,6 +206,7 @@ impl<T: std::fmt::Debug + Clone + PartialEq> ArrayList<T> {
     }
 
     pub fn cap(&self) -> usize {
+        self.count.set(self.update_count());
         self.vec.borrow().capacity()
     }
 
