@@ -147,7 +147,7 @@ let al = arraylist![].add("bruno").add("b").add("🦀")
         al.print(); // []
  
  6. clone
- >***pub fn clone(&self) -> Self***
+ >***pub fn clone(&self) -> ArrayList<T>***
  >- Returns a new different ArrayList instance, having the same elements. It is not a refrence. A change to the element made by clone *_does NOT_* in any way affect the other instance.
  
     let new_clone = al.clone();
@@ -165,7 +165,7 @@ let al = arraylist![].add("bruno").add("b").add("🦀")
         println!("{}", players.contains("Ronaldo")); // true
  
  8. copy
- >***pub fn copy(&self) -> &self***
+ >***pub fn copy(&self) -> &ArrayList<T>***
  >- Returns a reference "copy" of the arraylist instance. Any change made one, reflect on the other. This is difference from the `clone` method. Note, you can make several copies of that instance.
  
     let new_copy = al.copy();
@@ -176,7 +176,29 @@ let al = arraylist![].add("bruno").add("b").add("🦀")
         al.print();       // [1, 3, 0]
  
  9. default
+ >***pub fn default(&self) -> ArrayList<T>***
+ >- Implements the Default traits for ArrayList. Returns a new arraylist instance with default values for each of it's elements.
+ 
+        #[derive(Debug, Clone, PartialEq)]
+        struct Person<'a> {
+            name: &'a str,
+            age: u32,
+        }
+        let array = ArrayList::<Person>::default();
+        array.print(); //   []
+        array.push(Person {
+            name: "boris",
+            age: 23,
+        });
+        array.print(); //  [Person { name: "boris", age: 23 }
+        
  10. ensure_capacity
+ >***pub fn ensure_capacity(size: usize) -> ArrayList<T>***
+ >- Construts a new and empty ArrayList<T> with a specified capacity. 
+ 
+    let na: ArrayList<u8> = ArrayList::ensure_capacity(10);
+        println!("{}", na.cap()); // 10
+        
  11. finish
  12. for_each
  13. from_slice
@@ -199,3 +221,7 @@ let al = arraylist![].add("bruno").add("b").add("🦀")
  30. start_with
  31. sub_list
  32. to_vec
+
+## TODO
+[] Finish up the presentation and the documentation. All methods and macros works as intended. 
+[] Carry out more test and benchmarks for complex scenarios.
