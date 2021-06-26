@@ -224,4 +224,5 @@ let al = arraylist![].add("bruno").add("b").add("🦀")
 
 ## TODO
 [] Finish up the presentation and the documentation. All methods and macros works as intended. 
+    
 [] Carry out more test and benchmarks for complex scenarios.
