@@ -101,7 +101,7 @@ let al = arraylist![].add("bruno").add("b").add("🦀")
  
  Below are the list of the available methods in the crate `ArrayList`:
  1. add
- > pub fn add(&mut self) -> &ArrayList<T>
+ > ***pub fn add(&mut self) -> &ArrayList<T>***
  > - Pushes a value into a mutable instance of either an empty or non-empty arraylist ArrayList<T>. The length of the list is increased by 1.
  
         
@@ -112,7 +112,7 @@ let al = arraylist![].add("bruno").add("b").add("🦀")
     
     
  2. add_all
- > pub fn add_all(&self, collection: &[T]) 
+ > ***pub fn add_all(&self, collection: &[T])***
  > - Takes a slice refrence, and append each of it's elements to the end of the list. Using the extend function of the underlaying `vec`. The length of the list increased by the number of the elements in the slice. The capacity of the list is also adjusted accordingly.
  
     
@@ -121,11 +121,60 @@ let al = arraylist![].add("bruno").add("b").add("🦀")
         al.print(); // [1, 2, 3, 4, 5]
     
  3. add_all_at_index
+ >***pub fn add_all_at_index(&self, idx: usize, collection: &[T])***
+ > - This function takes two parameters; the starting index for the collection to be inserted. And the a slice refrence to be inserted. It pushes the values in the list to right as it adds values from the slice parameter. 
+ Note that the starting index *_MUST_* not be greater than the length of the list itself. If the starting index is greater than the length or size of the list, your code panics. 
+ 
+    let al = arraylist![1, 2, 3];
+        al.add_all_at_index(1, &[4, 5, 6]);
+        al.print(); // [1, 4, 5, 6, 2, 3]
+ 
  4. cap
+ >***pub fn cap(&self) -> usize***
+ > - Return the capacity of the list.
+ 
+        println!(
+            "{}",
+            ArrayList::start_with(&["coke", "fanta", "pepsi", "chapman"]).cap()
+         );
+ 
  5. clear
+ >***pub fn clear(&self)***
+ > - Clears: it is remove all the elements in the list. 
+ 
+    let al = arraylist![1, 2, 3];
+        al.clear();
+        al.print(); // []
+ 
  6. clone
+ >***pub fn clone(&self) -> Self***
+ >- Returns a new different ArrayList instance, having the same elements. It is not a refrence. A change to the element made by clone *_does NOT_* in any way affect the other instance.
+ 
+    let new_clone = al.clone();
+        new_clone.push(1);
+        new_clone.push(3);
+        new_clone.print(); // [1, 3]
+        al.print();       // []
+ 
  7. contains
+ >***pub fn contains(&self, value: T) -> bool***
+ >- Returns true if the list contains the value of the parameter.
+ 
+    let players = arraylist!["Yekini", "Pele", "Ronaldo", "Messi"];
+        println!("{}", players.contains("Yakubu")); // false
+        println!("{}", players.contains("Ronaldo")); // true
+ 
  8. copy
+ >***pub fn copy(&self) -> &self***
+ >- Returns a reference "copy" of the arraylist instance. Any change made one, reflect on the other. This is difference from the `clone` method. Note, you can make several copies of that instance.
+ 
+    let new_copy = al.copy();
+        new_copy.push(1);
+        new_copy.push(3);
+        al.push(0);
+        new_copy.print(); // [1, 3, 0]
+        al.print();       // [1, 3, 0]
+ 
  9. default
  10. ensure_capacity
  11. finish
