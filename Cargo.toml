@@ -6,6 +6,7 @@ description = "A rust wrapper built on top of rust vector implementation. Taste 
 readme = "README.md"
 license = "MIT"
 repository = "https://github.com/2teez/arraylist"
+documentation = "https://github.com/2teez/arraylist"
 keywords = ["wrapper", "array", "vec", "list", "util"]
 categories = ["api-bindings", "data-structures"]
 edition = "2018"
