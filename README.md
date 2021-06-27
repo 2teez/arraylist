@@ -14,7 +14,7 @@ In the Cargo.toml file
     OR
 
     [dependancies]
-    arraylist = "0.1.0"
+    arraylist = "0.1.3"
 
 In the main.rs file
 
@@ -272,7 +272,7 @@ Below are the list of the available methods in the crate `ArrayList`:
             
 14. get
 
-    >**_ pub fn get(&self, index: usize) -> Option\<T>_**
+    >**_pub fn get(&self, index: usize) -> Option\<T>_**
     >
     >- `get` requires the index of the value wanted. It returns the value at the location wrapped in an `option` variant. If the index is greater than the length of the list, the operation panics. Else it returns the value in that index.
     
@@ -404,7 +404,7 @@ Below are the list of the available methods in the crate `ArrayList`:
                     
 25. push_on_index
 
-    >**_ pub fn push_on_index(&self, index: usize, value: T)_**
+    >**_pub fn push_on_index(&self, index: usize, value: T)_**
     >
     >- Takes two parameters; the index and the value to insert in the list. It works exactly like `insert` method.
     
@@ -415,7 +415,7 @@ Below are the list of the available methods in the crate `ArrayList`:
                     
 26. remove
 
-    >**_pub fn remove(&self, index: usize) -> T _**
+    >**_pub fn remove(&self, index: usize) -> T_**
     >
     >- It removes and return the element of the list specified by the supplied index as parameter. It also reduces the length of the list. Panics if the index > list length.
     
