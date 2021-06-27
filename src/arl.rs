@@ -129,7 +129,6 @@ impl<T: std::fmt::Debug + Clone + PartialEq> ArrayList<T> {
     }
 
     pub fn insert(&self, index: usize, value: T) {
-        //self.push_on_index(index, value);
         self.vec.borrow_mut().insert(index, value);
         self.count.set(self.update_count());
     }
