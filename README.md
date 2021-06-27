@@ -337,19 +337,104 @@ Below are the list of the available methods in the crate `ArrayList`:
 
     >**_pub fn len(&self) -> usize_**
     >
-    > Returns the length of the list.
+    >- Returns the length of the list.
     
             let al = arraylist!["yah", "yak", "kah"];
             println!("{}", al.len()); // 3
             al.clear();
             println!("{}", al.len()); // 0
+            
 21. new
+
+    >**_pub fn new() -> ArrayList\<T>_**
+    >
+    >- Constructs a new instance of arraylist with default values for the list type.
+    
+            let al = ArrayList::<String>::new();
+            // or
+            let al: ArrayList<String> = ArrayList::new();
+            
 22. pop
+
+    >**_pub fn pop(&self) -> Option<T>_**
+    >
+    >- Remove and return the last element in the list. Reducing the length and size of the list. The capacity of the list is not affected.
+    
+                let fruits = arraylist![
+                    "orange",
+                    "pear",
+                    "pineapple",
+                    "tangerine",
+                    "apple",
+                    "strawberry"
+                ];
+                println!("{}", fruits.pop().unwrap());
+                println!("{}", fruits.pop().unwrap());  
+                fruits.print(); // ["orange", "pear", "pineapple", "tangerine"]
+                
 23. print
+
+    >**_pub fn print(&self)_**
+    >
+    >- Prints out the elements in the list. It feels intutive to call `print` than to use the macro `println!` provideded in rust.
+    
+                    let fruits = arraylist![
+                        "orange",
+                        "pear",
+                        "pineapple",
+                        "tangerine",
+                        "apple",
+                        "strawberry"
+                    ];
+                    
+                    fruits.print(); //["orange", "pear", "pineapple", "tangerine", "apple", "strawberry"]
+                    
 24. push
+
+    >**_pub fn push(&self, value: T) -> bool_**
+    >
+    >- Appends the specified element to the end of this list. But unlike `add`, it does *_NOT_* make the list mutable to do so. Though work like `add`, it can't be used in a "builder" design manner like method `add`. Returns a boolean.
+    
+                    let al: ArrayList<i32> = ArrayList::new();
+                    al.push(-34);
+                    al.push(39);
+                    al.push(25);
+                    
+                    al.print(); // [-34, 39, 25]
+                    
 25. push_on_index
+
+    >**_ pub fn push_on_index(&self, index: usize, value: T)_**
+    >
+    >- Takes two parameters; the index and the value to insert in the list. It works exactly like `insert` method.
+    
+                    let al = arraylist![1, 2, 3];
+                    al.push_on_index(1, 7);
+                    al.push_on_index(0, 9);
+                    al.print(); // [9, 1, 7, 2, 3]
+                    
 26. remove
+
+    >**_pub fn remove(&self, index: usize) -> T _**
+    >
+    >- It removes and return the element of the list specified by the supplied index as parameter. It also reduces the length of the list. Panics if the index > list length.
+    
+                println!("{}", al.remove(al.len() - 1)); // 3
+                al.print();  // [9, 1, 7, 2]
+                println!("{}", al.remove(2)); // 7
+                al.print();  // [9, 1, 2]
+                
 27. remove_if
+
+    >**_pub fn remove_if(&self, f: fn(T) -> bool)_**
+    >
+    >- It works like `remove`, but instead of index, it takes a closure at a parameter and it applies the closure to every element of the list.
+    
+                let al = arraylist![1, 2, 3, 4, 5, 6, 7, 8, 9];
+                    al.print(); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+                    al.remove_if(|a| a % 2 == 0);
+                    al.print(); // [1, 3, 5, 7, 9]
+                    
 28. replace
 29. size
 30. start_with
@@ -357,7 +442,5 @@ Below are the list of the available methods in the crate `ArrayList`:
 32. to_vec
 
 ## TODO
-
-[] Finish up the presentation and the documentation. All methods and macros works as intended.
 
 [] Carry out more test and benchmarks for complex scenarios.
