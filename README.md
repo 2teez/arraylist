@@ -428,7 +428,7 @@ Below are the list of the available methods in the crate `ArrayList`:
 
     >**_pub fn remove_if(&self, f: fn(T) -> bool)_**
     >
-    >- It works like `remove`, but instead of index, it takes a closure at a parameter and it applies the closure to every element of the list.
+    >- It works like `remove`, but instead of index, it takes a closure as a parameter and it applies the closure to every element of the list.
     
                 let al = arraylist![1, 2, 3, 4, 5, 6, 7, 8, 9];
                     al.print(); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -436,11 +436,47 @@ Below are the list of the available methods in the crate `ArrayList`:
                     al.print(); // [1, 3, 5, 7, 9]
                     
 28. replace
+
+    >**_pub fn replace(&self, index: usize, value: T)_**
+    >
+    >- It replaces the elements specified by the index provided, with the new value also specified by the function. It panics if the index is greater the list length.
+    
+                al.replace(0, 23);
+                al.print();  // [23, 3, 5, 7, 9]
+    
 29. size
+
+    >**_pub fn size(&self) -> usize_**
+    >
+    >- Returns the number of elements in the list. Works like method `len`.
+    
+                println!("{}", al.len()); // 5
+                
 30. start_with
+
+    >**_pub fn start_with(collection: &[T]) -> ArrayList\<T>_**
+    >
+    >- Construst and return an Arraylist `ArrayList<T>`, using the slice reference given from the parameter. The type of the arraylist is infered from the type of the slice given. The type can also be specified.
+    
+                let nums = ArrayList::start_with(&[1, 2, 3, 4, 5, 6]);
+                    nums.print(); // [1, 2, 3, 4, 5, 6]
+    
 31. sub_list
+
+    >**_pub fn sub_list(&self, start: usize, stop: usize) -> Option\<ArrayList<T>>_**
+    >
+    >- Returns from this list all of the elements whose index is between start Index, inclusive, and to stop Index, exclusive. Panic if the to index is greater than the list length.
+    
+                let nums = ArrayList::start_with(&[1, 2, 3, 4, 5, 6]);
+                    nums.print(); // [1, 2, 3, 4, 5, 6]
+                    nums.sub_list(1, 4).unwrap().print(); // [2, 3, 4]
+                    
 32. to_vec
+
+    >**_pub fn to_vec(&self) -> Vec<T>_**
+    >
+    >- Convert and returns a `vector` with the elements of the list. This is actually great, since rust `vec` has so many mehtod which this wrapper didn't implement. Converting the `arraylist` to vec makes it possible to use these so many methods from vector. 
 
 ## TODO
 
-[] Carry out more test and benchmarks for complex scenarios.
+[] Carry out more test and benchmarks for more complex scenarios.
