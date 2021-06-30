@@ -4,6 +4,7 @@ use std::cell::{Cell, RefCell};
 use std::cmp::PartialEq;
 use std::fmt;
 use std::iter::IntoIterator;
+use std::iter::FromIterator;
 use std::rc::Rc;
 
 // === MACRO SECTION ===
@@ -334,6 +335,16 @@ impl<T: Clone> IntoIterator for ArrayList<T> {
 
     fn into_iter(self) -> Self::IntoIter {
         self.vec.borrow().clone().into_iter()
+    }
+}
+
+impl<T: Clone + PartialEq + std::fmt::Debug> FromIterator<T> for ArrayList<T> {
+    fn from_iter<I: IntoIterator<Item = T>>(iter: I) -> Self {
+        let ns = arraylist![];
+        for val in iter {
+            ns.push(val);
+        }
+        ns
     }
 }
 
