@@ -302,14 +302,12 @@ Below are the list of the available methods in the crate `ArrayList`:
     >- Takes a value as a paramater, and return `vector` of usize; `Vec<T>`, of all the indexes where the value could be found.
     
             println!(
-                "{:?}",
-                ArrayList::start_with(
-                    &"hello, world is luck to be loud"
+                    "{:?}",
+                    "hello, world is luck to be loud"
                         .chars()
-                        .collect::<Vec<_>>(),
-                )
-                .index_of_all('l')
-            );  // [2, 3, 10, 16, 27]
+                        .collect::<ArrayList<_>>()
+                        .index_of_all('l')
+            ); // [2, 3, 10, 16, 27]
             
 18. insert
 
