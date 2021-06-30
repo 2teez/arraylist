@@ -1,6 +1,6 @@
 [package]
 name = "arraylist"
-version = "0.1.4"
+version = "0.1.5"
 authors = ["timothy adigun <2teezrust@gmail.com>"]
 description = "A rust wrapper built on top of rust vector implementation. Taste like Java Arraylist, and intuitive to use like Python list and JavaScript array."
 readme = "README.md"
