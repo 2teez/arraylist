@@ -14,7 +14,7 @@ In the Cargo.toml file
     OR
 
     [dependancies]
-    arraylist = "0.1.3"
+    arraylist = "0.1.5"
 
 In the main.rs file
 
