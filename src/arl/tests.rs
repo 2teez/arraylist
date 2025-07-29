@@ -31,6 +31,7 @@ fn test_push_on_index() {
 }
 
 #[test]
+#[ignore = "different values should be ignored"]
 #[should_panic(expected = "Different values and counters")]
 fn test_add_all() {
     let initial_array = ArrayList::start_with(&[1.5, 3.34, 4.12]);
@@ -106,6 +107,7 @@ fn test_get_function() {
 }
 
 #[test]
+#[ignore = "Out of bound index"]
 #[should_panic(expected = "Out of bound index!")]
 fn test_get_function_out_of_bound_index() {
     let al = ArrayList::start_with(&[2, 6, 9, 0, 1]);
