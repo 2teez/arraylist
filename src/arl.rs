@@ -312,6 +312,17 @@ impl<T: std::fmt::Debug + Clone + PartialEq> ArrayList<T> {
         println!("{:?}", self.vec.borrow());
     }
 
+    ///
+    /// ```
+    /// use arraylist::{arl::ArrayList, arraylist};
+    ///
+    /// let langs = arraylist!["clojure", "golang", "kotlin", "groovy"];
+    /// langs.swap(0, 2);
+    /// assert_eq!(
+    ///    langs.to_vec(),
+    ///    ["kotlin", "golang", "clojure", "groovy"].to_vec()
+    /// );
+    /// ```
     pub fn swap(&self, first_idx: usize, second_idx: usize) {
         self.vec.borrow_mut().swap(first_idx, second_idx);
     }
