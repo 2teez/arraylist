@@ -73,7 +73,7 @@ fn test_clone() {
 #[test]
 fn test_contains() {
     let al = ArrayList::start_with(&['a', 'b', 'x', 'z']);
-    assert_eq!(al.contains(&'a'), true);
+    assert_eq!(al.contains('a'), true);
 }
 
 #[test]
@@ -115,7 +115,7 @@ fn test_get_function_out_of_bound_index() {
 #[test]
 fn test_get_index_of() {
     let al = ArrayList::start_with(&[2, 6, 9, 0, 1]);
-    assert_eq!(al.index_of(&0), Some(3));
+    assert_eq!(al.index_of(0), Some(3));
 }
 
 #[test]
