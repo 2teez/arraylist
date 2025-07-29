@@ -14,7 +14,7 @@ In the Cargo.toml file
     OR
 
     [dependancies]
-    arraylist = "0.1.5"
+    arraylist = "0.2.0"
 
 In the main.rs file
 
@@ -234,19 +234,19 @@ Below are the list of the available methods in the crate `ArrayList`:
     >**_pub fn finish(&self) -> ArrayList\<T>_**
     >
     >- Returns an immutable `arraylist`. Often called after the use of `add` function, which makes a mutable list and pushes it value into the list. `finish` is the function  to call give immutable variable you wanted.
-    
+
             let al = arraylist![]
                     .add("Lagos")
                     .add("Abuja")
-                    .finish();  // immutable 
+                    .finish();  // immutable
                 al.print();     // ["Lagos", "Abuja"]
-    
+
 12. for_each
 
     >**_pub fn for_each(&self, f: fn(T))_**
     >
     >- It takes a closure and perform action in the closure on each of the elements in the list. But it does *_NOT_* change the element of the list.
-    
+
             // square all odd numbers
             let nums = arraylist!(1, 2, 3, 4, 5);
             nums.for_each(|a| {
@@ -260,47 +260,47 @@ Below are the list of the available methods in the crate `ArrayList`:
             });
             nums.print(); // [1, 2, 3, 4, 5]
             // if you want nums to change use macro `for_each!` instead
-            
+
 13. from_slice
 
     >**_pub fn from_slice(collection: &[T]) -> ArrayList\<T>_**
     >
     >- Takes a reference to a slice of values and return an ArrayList of the same values.
-    
+
             let fruits = ArrayList::from_slice(&["pineapple", "pear", "banana", "orange"]);
             fruits.print(); //  ["pineapple", "pear", "banana", "orange"]
-            
+
 14. get
 
     >**_pub fn get(&self, index: usize) -> Option\<T>_**
     >
     >- `get` requires the index of the value wanted. It returns the value at the location wrapped in an `option` variant. If the index is greater than the length of the list, the operation panics. Else it returns the value in that index.
-    
+
             let fruits = ArrayList::from_slice(&["pineapple", "pear", "banana", "orange"]);
             // println!("{}", fruits.get(31).unwrap()); // panics
             println!("{}", fruits.get(3).unwrap()); // orange
-    
+
 15. index_in
 
     >**_pub fn index_in(&self, value: usize) -> Option\<T>_**
     >
     > works like `get` method.
-    
+
 16. index_of
 
     >**_pub fn index_of(&self, value: T) -> Option\<usize>_**
     >
     >- Takes a parameter of the value and return the index where the value is located. `index_of` like a reverse of both `get` and `index_in`. If the value is not in the list, the operation panics on unwrap.
-    
+
             //println!("{:?}", fruits.index_of("pine").unwrap()); // panics
             println!("{:?}", fruits.index_of("orange").unwrap()); // 3
-            
+
 17. index_of_all
 
     >**_pub fn index_of_all(&self, value: T) -> Vec\<usize>_**
     >
     >- Takes a value as a paramater, and return `vector` of usize; `Vec<T>`, of all the indexes where the value could be found.
-    
+
             println!(
                     "{:?}",
                     "hello, world is luck to be loud"
@@ -308,56 +308,56 @@ Below are the list of the available methods in the crate `ArrayList`:
                         .collect::<ArrayList<_>>()
                         .index_of_all('l')
             ); // [2, 3, 10, 16, 27]
-            
+
 18. insert
 
     >**_pub fn insert(&self, index: usize, value: T)_**
     >
     >- Given two paramaters; the index where the value to be inserted and the value to be inserted. This function, shift, the value in the index (or position) specified and "insert" the new value. Panics if index > length of the list.
-    
+
                 let places = arraylist![].add("Lagos").add("Abuja").finish();
                 places.print();  // ["Lagos", "Abuja"]
                 places.insert(1, "kumasi");
                 places.print();  // ["Lagos", "kumasi", "Abuja"]
-                
+
 19. is_empty
 
     >**_pub fn is_empty(&self) -> bool_**
     >
     > Returns true if this list contains no elements, else it returns false.
-    
+
             let al = arraylist!["yah", "yak", "kah"];
             al.clear();
             println!("{}", al.is_empty()); // true
             println!("{}", arraylist![3, 5, 7, 9].is_empty()); // false
-            
+
 20. len
 
     >**_pub fn len(&self) -> usize_**
     >
     >- Returns the length of the list.
-    
+
             let al = arraylist!["yah", "yak", "kah"];
             println!("{}", al.len()); // 3
             al.clear();
             println!("{}", al.len()); // 0
-            
+
 21. new
 
     >**_pub fn new() -> ArrayList\<T>_**
     >
     >- Constructs a new instance of arraylist with default values for the list type.
-    
+
             let al = ArrayList::<String>::new();
             // or
             let al: ArrayList<String> = ArrayList::new();
-            
+
 22. pop
 
     >**_pub fn pop(&self) -> Option<T>_**
     >
     >- Remove and return the last element in the list. Reducing the length and size of the list. The capacity of the list is not affected.
-    
+
                 let fruits = arraylist![
                     "orange",
                     "pear",
@@ -367,15 +367,15 @@ Below are the list of the available methods in the crate `ArrayList`:
                     "strawberry"
                 ];
                 println!("{}", fruits.pop().unwrap());
-                println!("{}", fruits.pop().unwrap());  
+                println!("{}", fruits.pop().unwrap());
                 fruits.print(); // ["orange", "pear", "pineapple", "tangerine"]
-                
+
 23. print
 
     >**_pub fn print(&self)_**
     >
     >- Prints out the elements in the list. It feels intutive to call `print` than to use the macro `println!` provideded in rust.
-    
+
                     let fruits = arraylist![
                         "orange",
                         "pear",
@@ -384,96 +384,107 @@ Below are the list of the available methods in the crate `ArrayList`:
                         "apple",
                         "strawberry"
                     ];
-                    
+
                     fruits.print(); //["orange", "pear", "pineapple", "tangerine", "apple", "strawberry"]
-                    
+
 24. push
 
     >**_pub fn push(&self, value: T) -> bool_**
     >
     >- Appends the specified element to the end of this list. But unlike `add`, it does *_NOT_* make the list mutable to do so. Though work like `add`, it can't be used in a "builder" design manner like method `add`. Returns a boolean.
-    
+
                     let al: ArrayList<i32> = ArrayList::new();
                     al.push(-34);
                     al.push(39);
                     al.push(25);
-                    
+
                     al.print(); // [-34, 39, 25]
-                    
+
 25. push_on_index
 
     >**_pub fn push_on_index(&self, index: usize, value: T)_**
     >
     >- Takes two parameters; the index and the value to insert in the list. It works exactly like `insert` method.
-    
+
                     let al = arraylist![1, 2, 3];
                     al.push_on_index(1, 7);
                     al.push_on_index(0, 9);
                     al.print(); // [9, 1, 7, 2, 3]
-                    
+
 26. remove
 
     >**_pub fn remove(&self, index: usize) -> T_**
     >
     >- It removes and return the element of the list specified by the supplied index as parameter. It also reduces the length of the list. Panics if the index > list length.
-    
+
                 println!("{}", al.remove(al.len() - 1)); // 3
                 al.print();  // [9, 1, 7, 2]
                 println!("{}", al.remove(2)); // 7
                 al.print();  // [9, 1, 2]
-                
+
 27. remove_if
 
     >**_pub fn remove_if(&self, f: fn(T) -> bool)_**
     >
     >- It works like `remove`, but instead of index, it takes a closure as a parameter and it applies the closure to every element of the list.
-    
+
                 let al = arraylist![1, 2, 3, 4, 5, 6, 7, 8, 9];
                     al.print(); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
                     al.remove_if(|a| a % 2 == 0);
                     al.print(); // [1, 3, 5, 7, 9]
-                    
+
 28. replace
 
     >**_pub fn replace(&self, index: usize, value: T)_**
     >
     >- It replaces the elements specified by the index provided, with the new value also specified by the function. It panics if the index is greater the list length.
-    
+
                 al.replace(0, 23);
                 al.print();  // [23, 3, 5, 7, 9]
-    
+
 29. size
 
     >**_pub fn size(&self) -> usize_**
     >
     >- Returns the number of elements in the list. Works like method `len`.
-    
+
                 println!("{}", al.len()); // 5
-                
+
 30. start_with
 
     >**_pub fn start_with(collection: &[T]) -> ArrayList\<T>_**
     >
     >- Construst and return an Arraylist `ArrayList<T>`, using the slice reference given from the parameter. The type of the arraylist is infered from the type of the slice given. The type can also be specified.
-    
+
                 let nums = ArrayList::start_with(&[1, 2, 3, 4, 5, 6]);
                     nums.print(); // [1, 2, 3, 4, 5, 6]
-    
+
 31. sub_list
 
     >**_pub fn sub_list(&self, start: usize, stop: usize) -> Option\<ArrayList<T>>_**
     >
     >- Returns from this list all of the elements whose index is between start Index, inclusive, and to stop Index, exclusive. Panic if the to index is greater than the list length.
-    
+
                 let nums = ArrayList::start_with(&[1, 2, 3, 4, 5, 6]);
                     nums.print(); // [1, 2, 3, 4, 5, 6]
                     nums.sub_list(1, 4).unwrap().print(); // [2, 3, 4]
-                    
-32. to_vec
+
+32. swap
+
+    >**_pub fn swap(&self, first_idx: usize, second_idx: usize)_**
+    >
+    >-  Swap the position of the values which indices were specified as parameters. The indices
+    must be with the arraylist bound.
+
+                let langs = arraylist!["clojure", "golang", "kotlin", "groovy"];
+                langs.swap(1, 3);
+                langs.print(); // ["clojure", "groovy", "kotlin", "golang"]
+
+33. to_vec
 
     >**_pub fn to_vec(&self) -> Vec<T>_**
     >
-    >- Convert and returns a `vector` with the elements of the list. This is actually great, since rust `vec` has so many mehtod which this wrapper didn't implement. Converting the `arraylist` to vec makes it possible to use these so many methods from vector. 
+    >- Convert and returns a `vector` with the elements of the list. This is actually great, since rust `vec` has so many mehtod which this wrapper didn't implement. Converting the `arraylist` to vec makes it possible to use these so many methods from vector.
 
 ## TODO
 
