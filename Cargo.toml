@@ -1,6 +1,6 @@
 [package]
 name = "arraylist"
-version = "0.1.5"
+version = "0.2.0"
 authors = ["timothy adigun <2teezrust@gmail.com>"]
 description = "A rust wrapper built on top of rust vector implementation. Taste like Java Arraylist, and intuitive to use like Python list and JavaScript array."
 readme = "README.md"
@@ -9,7 +9,7 @@ repository = "https://github.com/2teez/arraylist"
 documentation = "https://github.com/2teez/arraylist"
 keywords = ["wrapper", "array", "vec", "list", "util"]
 categories = ["api-bindings", "data-structures"]
-edition = "2018"
+edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
