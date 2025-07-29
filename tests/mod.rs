@@ -3,6 +3,17 @@
 use arraylist::{arl::ArrayList, arraylist};
 
 #[test]
+pub fn test_arraylist_swapping() {
+    let langs = arraylist!["clojure", "golang", "kotlin", "groovy"];
+    langs.swap(1, 3);
+    langs.print(); // ["clojure", "groovy", "kotlin", "golang"]
+    assert_eq!(
+        langs.to_vec(),
+        ["clojure", "groovy", "kotlin", "golang"].to_vec()
+    );
+}
+
+#[test]
 pub fn test_arraylist_swap() {
     let mut a = arraylist!["java", "kotlin"];
     a.swap(0, 1);
