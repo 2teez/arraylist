@@ -3,8 +3,8 @@
 use std::cell::{Cell, RefCell};
 use std::cmp::PartialEq;
 use std::fmt;
-use std::iter::IntoIterator;
 use std::iter::FromIterator;
+use std::iter::IntoIterator;
 use std::rc::Rc;
 
 // === MACRO SECTION ===
@@ -146,7 +146,7 @@ impl<T: std::fmt::Debug + Clone + PartialEq> ArrayList<T> {
         self.count.set(self.update_count());
     }
 
-   pub fn add_all_at_index(&self, idx: usize, collection: &[T]) {
+    pub fn add_all_at_index(&self, idx: usize, collection: &[T]) {
         if idx == 0 {
             self.add_all_at_start(collection);
         } else if idx <= self.len() {
@@ -310,6 +310,10 @@ impl<T: std::fmt::Debug + Clone + PartialEq> ArrayList<T> {
 
     pub fn print(&self) {
         println!("{:?}", self.vec.borrow());
+    }
+
+    pub fn swap(&self, first_idx: usize, second_idx: usize) {
+        self.vec.borrow_mut().swap(first_idx, second_idx);
     }
 }
 
